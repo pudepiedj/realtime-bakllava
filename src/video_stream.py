@@ -36,7 +36,7 @@ while True:
 
     with open("output.txt", "a") as write_file:
         write_file.write("---"*10 + "\n\n")
-    
+
     for chunk in response.iter_content(chunk_size=128):
         with open("output.txt", "a") as write_file:
             content = chunk.decode().strip().split('\n\n')[0]
@@ -48,6 +48,7 @@ while True:
                     print(content_json["content"], end='', flush=True)
                 write_file.flush()  # Save the file after every chunk
             except json.JSONDecodeError:
-                print("JSONDecodeError: Expecting property name enclosed in double quotes")
+                # print("JSONDecodeError: Expecting property name enclosed in double quotes")
+                print("\n--------------------------------------------------------------------\n")
 
 cap.close()
